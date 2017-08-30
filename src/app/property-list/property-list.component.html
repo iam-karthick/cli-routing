@@ -1,0 +1,46 @@
+<div *ngFor="let prop of property" class="col-sm-4">
+  <div class="thumbnail">
+    <img src="./assets/images/{{ prop.image }}.jpg" alt="">
+    <div class="caption">
+      <div *ngIf="!prop.showDetails">
+        <h4>
+          <span class="label label-default">
+            {{ prop.type }}
+          </span>
+        </h4>
+        <h4>
+          <span class="glyphicon glyphicon-home">
+            {{ prop.address }}
+          </span>
+        </h4>
+        <h4>
+          <span class="glyphicon glyphicon-tag">
+            {{ prop.price | currency:"INR":true }}
+          </span>
+        </h4>
+        <hr>
+        <button class="btn btn-success" *ngIf="!prop.showDetails" (click)="prop.showDetails=!prop.showDetails">details</button>
+      </div> 
+      <div *ngIf="prop.showDetails">
+       <h4>
+          <span class="label label-default">
+            beds:{{ prop.bedrooms }}
+          </span>
+        </h4>
+        <h4>
+          <span class="label label-default">
+            Sqft:{{ prop.area }}
+          </span>
+        </h4>
+        <h4>
+          <span class="label label-default">
+            baths:{{ prop.bathrooms }}
+          </span>
+        </h4>
+        <p>{{ prop.description }}</p>
+        <hr>
+        <button class="btn btn-danger"  (click)="prop.showDetails=!prop.showDetails">close</button>
+      </div> 
+    </div>
+  </div>
+</div>
